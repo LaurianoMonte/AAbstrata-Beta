@@ -1,0 +1,29 @@
+{% extends 'default.html' %}
+
+{% block content %}
+
+    <!--navbar-->
+    {% include 'MyBlog/partial/_nav.html' %}
+
+    <!--Header-->
+    {% include 'MyBlog/partial/_header.html' %}
+
+    <!--content-->
+    <div class="container" style="text-align: center; padding-top: 30px;">
+        <div class="title">
+            <h1>{{ post.title|safe }}</h1>
+        </div>
+        <div class="short_description" style=" padding-top: 10px;">
+            {{ post.short_description|safe }}
+        </div>
+        <div class="image" style=" padding-top: 30px;">
+            <img src="{{ post.post_image.url }}" alt="" style="width: auto; height: auto; max-width: 20%; max-height: 20%">
+        </div>
+        <div class="content" style=" padding-top: 30px; padding-left: 100px; padding-right: 100px;" >
+            {{ post.content|safe }}
+    </div>
+
+    <!--Footer-->
+    {% include 'MyBlog/partial/_footer.html' %}
+
+{% endblock %}

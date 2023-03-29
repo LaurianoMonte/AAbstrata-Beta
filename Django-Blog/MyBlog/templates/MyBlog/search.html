@@ -1,0 +1,69 @@
+{% extends 'default.html' %}
+{% load static %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+    <!--NavBar-->
+    {% include 'MyBlog/partial/_nav.html' %}
+
+    <!--Header-->
+    {% include 'MyBlog/partial/_header.html' %}
+
+
+    <!--Content-->
+    <main class="container">
+        <div class="title text-yellow fw-bold">
+            <h2>ESCOLHA SEU ARTIGO</h2>
+        </div>
+
+        <!--Nav filter links-->
+        <div class="nav-scroller py-1 mb-2 white-text" style="padding-top: 30px !important;">
+            <nav class="nav d-flex">
+                <a class="p-2 link-secondary text-white" href="{% url 'see_library' %}">Anéis de polinômios</a>
+                <a class="p-2 link-secondary text-white" href="{% url 'see_language' %}">Anéis e Ideais</a>
+                <a class="p-2 link-secondary text-white" href="{% url 'see_news' %}">Grupos</a>
+                <a class="p-2 link-secondary text-white" href="{% url 'see_reference' %}">Referências</a>
+            </nav>
+        </div>
+
+        <!--Search bar  -->
+        <br>
+        <form method="get" action="{% url 'search' %}" style="max-width: 950px; padding-left: 200px;">
+            <div class="form-group row">
+                <div class="col-12">
+                    <input class="form-control"
+                           type="search" value="{{ request.GET.term }}"
+                           id="search-input"
+                           placeholder="Search"
+                           name="term">
+                </div>
+            </div>
+        </form>
+
+        <div class="row mb-2 blog-texts">
+            {% for post in posts %}
+                <div class="col-md-6">
+                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                        <div class="col p-4 d-flex flex-column position-static">
+                            <strong class="d-inline-block mb-2 text-primary">{{ post.category }}</strong>
+                            <h3 class="mb-0">{{ post.title }}</h3>
+                            <div class="mb-1 text-muted">{{ post.date }}</div>
+                            <p class="card-text mb-auto">{{ post.short_description }}</p>
+                            <a href="{% url 'see_post' post.id %}" class="stretched-link">Continue lendo...</a>
+                        </div>
+                        <div class="col-auto d-none d-lg-block">
+                            <img class="bd-placeholder-img" width="200" height="250" role="img"
+                                 src="{{ post.post_image.url }}">
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </main>
+    <!--Footer-->
+    {% include 'MyBlog/partial/_footer.html' %}
+
+{% endblock %}

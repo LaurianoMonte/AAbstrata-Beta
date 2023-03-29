@@ -1,0 +1,29 @@
+{% extends 'default.html' %}
+{% load static %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+    <!--NavBar-->
+    {% include 'MyBlog/partial/_nav.html' %}
+
+    <!--Header-->
+    {% include 'MyBlog/partial/_header.html' %}
+
+    <main class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <p>Este site foi desenvolvido para a disciplina de Álgebra Abstrata, com o intuito de ajudar no aprendizado da disciplina, e focando na integralização com a programação.</p>
+                        <p>Totalmente feito usando a linguagem de programação Python na versão 3.9.13, o framework voltado para desenvolvimento web Django em sua versão 4.1.7 e as linguagens de marcação HTML5 e CSS3. </p>
+                        <p>Todo o código esta disponível em um repositório no GitHub </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    <!--Footer-->
+    {% include 'MyBlog/partial/_footer.html' %}
+
+{% endblock %}
